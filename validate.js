@@ -128,18 +128,28 @@ function buscar() {
 
     var acumErrores = 0;
 	cercar.classList.remove('is-invalid');
-
-    
+	var buscadorV = document.getElementById('buscador').value
 
 	if(cercar.value == ""){
 
         cercar.classList.add("is-invalid");
 		document.getElementById("erBuscador").textContent = "Campo obligado";
-		acumErrores ++;      
-    }
-
+		acumErrores ++; 
+		return false;     
+	}
 
     if (acumErrores > 0){
+		return false;
+		
+	}else if (buscadorV.length<3) {
+		
+		cercar.classList.add("is-invalid");
+		document.getElementById("erBuscador").textContent = "La palabra tiene que tener más de 3 caracteres";
+		acumErrores ++;     
+		return false;
+	}	
+
+	if (acumErrores > 0){
         return false;
 
     }else{
